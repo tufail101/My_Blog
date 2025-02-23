@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 message.style.color = "green";
                 console.log("User Info:", data.user);
 
-                // ✅ Redirect to a dashboard (if needed)
-                // window.location.href = "/dashboard.html";
+               
+                window.location.href = "../index.html";
             } else {
                 message.innerText = data.error;
                 message.style.color = "red";
