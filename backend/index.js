@@ -48,7 +48,8 @@ app.post("/login", (req, res) => {
         }
         else{
               console.log(user);
-              res.json({user});
+              res.json({message:"SuccesFully Login",userId:user.id,userName:user.name});
+              // res.json({user});
 
           }
     }
@@ -89,6 +90,26 @@ app.post("/signup",(req,res)=>{
     
   }
 
+})
+app.post("/createPost",(req,res)=>{
+  let {userId,title,content} = req.body;
+  // console.log(req.body);
+  let postId = uuidv4();
+  if(!title || !content){
+    return res.status(400).json({error:"All Filed Are Required"});
+  }
+  let q = `INSERT INTO posts(id,userId,title,content) VALUES(?,?,?,?)`;
+  try{
+    connection.query(q,[postId,userId,title,content],(err,result)=>{
+      if(err) throw err;
+      res.status(200).json({message:"Post Create SuccesFully"});
+
+    })
+  }catch(err){
+    console.log(err);
+    
+  }
+  
 })
 
 app.listen(port, (req, res) => {

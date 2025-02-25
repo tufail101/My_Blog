@@ -1,4 +1,5 @@
 const user = JSON.parse(localStorage.getItem("user"));
+const createPost =document.getElementsByClassName("createPost")[0];
 document.addEventListener("DOMContentLoaded", () => {
   console.log(user);
 
@@ -53,3 +54,6 @@ document.getElementById("btn-confirm").addEventListener("click", () => {
 document.getElementById("btn-cancel").addEventListener("click", () => {
   confirmAction(false);
 });
+createPost.addEventListener("click",()=>{
+  window.location.href = "./pages/createPost.html";
+})

@@ -20,8 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if (response.ok) {
                 message.innerText = "Login Successful!";
                 message.style.color = "green";
-                console.log("User Info:", data.user);
-                localStorage.setItem("user", JSON.stringify(data.user));
+                const user ={
+                    userId:data.userId,
+                    userName: data.userName
+                };
+                console.log("User Info:", user);
+                localStorage.setItem("user", JSON.stringify(user));
+
 
                
                 window.location.href = "../index.html";
