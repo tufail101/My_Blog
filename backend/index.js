@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
      
     if(!user){
         console.log("Invalid User");
-        
+        res.json({message:"Invalid User"});
     }else{
 
         // console.log(result[0]);

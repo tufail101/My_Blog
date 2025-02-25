@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Blog</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./public/styles/home.css">
 </head>
 <body class="bg-gray-100">
   <nav class="bg-white shadow-md">
@@ -14,11 +15,21 @@
         <li><a href="#" class="text-gray-600 hover:text-blue-600">Home</a></li>
         <li><a href="#" class="text-gray-600 hover:text-blue-600">About</a></li>
         <li><a href="#" class="text-gray-600 hover:text-blue-600">Contact</a></li>
-        <li><a href="./pages/login.html" class="text-gray-600 hover:text-blue-600">Login</a></li>
-        <li><a href="./pages/singUp.html" class="text-gray-600 hover:text-blue-600">Signup</a></li>
+        <li><a href="./pages/login.html" class="text-gray-600 hover:text-blue-600" id="login">Login</a></li>
+        <li><a href="./pages/singUp.html" class="text-gray-600 hover:text-blue-600" id="signup">Signup</a></li>
+        <li><button class="text-gray-600 hover:text-blue-600" id="logout" style="display: none;">Log Out</button></li>
       </ul>
     </div>
   </nav>
+  <div id="constumAlert" class="bg-red-200 text-gray-600 px-4 py-4 " style="display: none;">
+    <p class="mx-4 font-bold"></p>
+  </div>
+  <div id="overlay"></div>
+  <div id="customConfirm">
+    <p>Are you sure you want to logout?</p>
+    <button class="btn btn-confirm"  id="btn-confirm">Yes</button>
+    <button class="btn btn-cancel"  id="btn-cancel">No</button>
+  </div>
 
   <header class="bg-blue-600 text-white text-center py-20">
     <h1 class="text-4xl font-bold">Welcome to My Blog</h1>
@@ -30,5 +41,7 @@
   <footer class="bg-white text-center py-6 mt-10 shadow-md">
     <p class="text-gray-600">&copy; 2025 My Blog. All rights reserved.</p>
   </footer>
+
+  <script type="module" src="./scripts/home.js"></script>
 </body>
 </html>
