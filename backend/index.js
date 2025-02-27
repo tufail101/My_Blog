@@ -6,19 +6,20 @@ const upload = require("./middlewares/multer.middlewares");
 const uploadOnCloudinary = require("./utils/cloudinary");
 
 const path = require("path");
+const { error } = require("console");
 
 const app = express();
 const port = 3000;
-// app.use("/uploads", express.static("uploads"));
-app.use(express.static("public"));
 
+
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://127.0.0.1:5500", // ✅ Allow only your frontend
+    origin: "http://127.0.0.1:5500", 
     methods: ["POST", "GET"],
-    credentials: true, // ✅ Allow cookies if needed
+    credentials: true,
   })
 );
 
@@ -147,8 +148,22 @@ app.get("/userPost/:userId",(req,res)=>{
 
 })
 app.get("/post/:postId",(req,res)=>{
-  let postId = req.params;
-  res.send("all ok");
+  let postId = req.params.postId;
+  let q = `SELECT * FROM posts WHERE id = ?`;
+  try {
+    connection.query(q,[postId],(err,result) => {
+      if (err) throw err;
+
+      if(result.length === 0){
+        return res.status(500).json({error:"Internal Server Error"})
+      }
+      // console.log(result);
+      res.status(200).json(result[0]);
+    })
+  } catch (err) {
+     console.error('SQL error:', err);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 })
 
 app.listen(port, (req, res) => {

@@ -15,6 +15,7 @@ const fetchPost = async () => {
         return;
       }
       // console.log(data);
+
       data.forEach((post) => {
         let postData = document.createElement("div");
         postData.innerHTML = `
@@ -34,8 +35,8 @@ const fetchPost = async () => {
  `;
         postContener.appendChild(postData);
         postData.addEventListener("click", () => {
-          // window.location.href = `/post/${post.id}`;
-          window.location.href = `../pages/post.html`;
+          window.location.href = `../pages/post.html?postId=${post.id}`;
+          // window.location.href = `../pages/post.html`;
         });
       });
     }
