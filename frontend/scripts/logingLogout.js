@@ -1,9 +1,9 @@
-const user = JSON.parse(localStorage.getItem("user"));
+const User = JSON.parse(localStorage.getItem("user"));
 const createPost =document.getElementsByClassName("createPost")[0];
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(user);
+  // console.log(user);
 
-  if (user) {
+  if (User) {
     document.getElementById("logout").style.display = "block";
     document.getElementById("login").style.display = "none";
     document.getElementById("signup").style.display = "none";
@@ -29,7 +29,7 @@ function confirmAction(isConfirmed) {
     alrt.style.display = "block";
     alrt.classList.remove("bg-red-200");
     alrt.classList.add("bg-green-200");
-    alrt.innerHTML = `${user.name} Is Logged Out`;
+    alrt.innerHTML = `${User.name} Is Logged Out`;
     window.location.reload();
 
     setTimeout(() => {
@@ -54,6 +54,3 @@ document.getElementById("btn-confirm").addEventListener("click", () => {
 document.getElementById("btn-cancel").addEventListener("click", () => {
   confirmAction(false);
 });
-createPost.addEventListener("click",()=>{
-  window.location.href = "./pages/createPost.html";
-})
