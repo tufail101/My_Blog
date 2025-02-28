@@ -4,12 +4,13 @@ const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 const upload = require("./middlewares/multer.middlewares");
 const uploadOnCloudinary = require("./utils/cloudinary");
+require("dotenv").config();
 
 const path = require("path");
 const { error } = require("console");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 
 app.use(express.static("public"));
