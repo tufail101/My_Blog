@@ -62,39 +62,43 @@ app.post("/login", (req, res) => {
     console.log(err);
   }
 });
-app.post("/signup", (req, res) => {
-  let { name, userName, email, password } = req.body;
-  let id = uuidv4();
-  if (!userName || !password || !email) {
-    return res.status(400).json({ error: "Missing credentials" });
-  }
-  let q1 = `SELECT * FROM user WHERE userName = ?`;
-  try {
-    connection.query(q1, [userName], (err, result) => {
-      if (err) throw err;
-      if (result.length > 0) {
-        return res.status(400).json({ error: "Username already exists" });
-      } else {
-        let q2 = `INSERT INTO user (id,name,userName,email,password) VALUES(?,?,?,?,?)`;
-        try {
-          connection.query(
-            q2,
-            [id, name, userName, email, password],
-            (err, result) => {
-              if (err) throw err;
-              res
-                .status(201)
-                .json({ message: "User registered successfully", userId: id });
-            }
-          );
-        } catch (err) {
-          console.log(err);
+app.post("/signup",upload.single("image"), async (req, res) => {
+  const { name, userName, email, password } = req.body;
+    const id = uuidv4();
+
+    if (!userName || !password || !email) {
+        return res.status(400).json({ error: "Missing credentials" });
+    }
+
+    let pic_img = null;
+
+    try {
+        if (req.file) {
+            const localFilePath = req.file.path;
+            const cloudinaryRes = await uploadOnCloudinary(localFilePath);
+            pic_img = cloudinaryRes.secure_url;
         }
-      }
-    });
-  } catch (err) {
-    console.log(err);
-  }
+
+        const q1 = "SELECT * FROM user WHERE userName = ?";
+        connection.query(q1, [userName], (err, result) => {
+            if (err) throw err;
+
+            if (result.length > 0) {
+                return res.status(400).json({ error: "Username already exists" });
+            }
+
+            const q2 = "INSERT INTO user (id, name, userName, email, password, pic_url) VALUES (?, ?, ?, ?, ?, ?)";
+
+            connection.query(q2, [id, name, userName, email, password, pic_img], (err) => {
+                if (err) throw err;
+
+                res.status(201).json({ message: "User registered successfully", userId: id });
+            });
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 app.post("/createPost",upload.single('image'), async(req, res) => {
   let { userId, title, content } = req.body;
