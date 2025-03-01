@@ -31,7 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const response = await fetch("http://localhost:3000/signup", {
               method: "POST",
-              body: formData
+            //   headers: { "Content-Type": "application/json" },
+            //   body: JSON.stringify({name,userName,email,password,image})
+            body : formData
           });
 
           const data = await response.json();
@@ -41,8 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
               message.innerText = "Sign up successful!";
               message.style.color = "green";
               
-              
+              setTimeout(() => {
+                
                   window.location.href = "../pages/login.html";
+              }, 2000);
              
           } else {
               message.innerText = data.error || "Something went wrong!";

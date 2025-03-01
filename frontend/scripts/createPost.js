@@ -1,5 +1,5 @@
 const user = JSON.parse(localStorage.getItem("user"));
-
+document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
     e.preventDefault();
     const title = document.getElementById("title").value;
@@ -26,13 +26,18 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         const response = await fetch("http://localhost:3000/createPost",{
             method:"POST",
             // headers:{"Content-Type":"application/json"},
+            // body:JSON.stringify({userId,title,content,image})
             body:formData
+           
         })
         const data = await response.json();
         console.log(data);
         if(response.ok){
             message.innerText = `Post Create SuccesFully`;
             message.style.color = "green";
+            setTimeout(()=>{
+                window.location.href = `../pages/userPost.html`;
+            },2000)
         }
         
     }catch(error){
@@ -43,3 +48,4 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
     }
 
 })
+});
