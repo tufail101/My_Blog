@@ -1,3 +1,5 @@
+
+
 const user = JSON.parse(localStorage.getItem("user"));
 const fetchPost = async () => {
   const userId = user.userId;
@@ -29,15 +31,45 @@ const fetchPost = async () => {
     <h3 class="text-2xl font-extrabold text-gray-900 mb-2">${post.title}</h3>
     <p class="text-gray-700 leading-relaxed mb-4">${post.content.substring(0, 100)}...</p>
   </div>
+  <div class="w-1/3">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl read-more-btn">Read More</button>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-xl deleteBtn ">Delete</button>
 </div>
 
 
  `;
+
         postContener.appendChild(postData);
-        postData.addEventListener("click", () => {
+        const read_more_btn = postData.querySelector(".read-more-btn");
+        read_more_btn.addEventListener("click", () => {
           window.location.href = `../pages/post.html?postId=${post.id}`;
           // window.location.href = `../pages/post.html`;
         });
+
+        const deleteBtn = postData.querySelector(".deleteBtn");
+        deleteBtn.addEventListener("click", async () => {
+          if (confirm("Are you sure you want to delete this post?")) {
+            try {
+              let response = await fetch(`http://localhost:3000/deletePost/${post.id}`, {
+                method: "DELETE",
+              });
+              let data = await response.json();
+              if (response.ok) {
+                alert(data.message);
+                postData.remove(); // Remove the post from DOM
+              } else {
+                alert(data.message);
+              }
+            } catch (error) {
+              console.log(error);
+              alert("Failed to delete post");
+            }
+          } else {
+            alert("Post was not deleted");
+          }
+        });
+        
+
       });
     }
   } catch (error) {

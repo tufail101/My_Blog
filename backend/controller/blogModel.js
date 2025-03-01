@@ -69,3 +69,17 @@ exports.post = (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+exports.deletePost = (req, res) => {
+  let postId = req.params.postId;
+  //   console.log(postId);
+  let q = `DELETE FROM posts WHERE id = ?`;
+  try {
+    connection.query(q, [postId], (err, result) => {
+      if (err) throw err;
+      res.status(200).json({ message: "Post Deleted SuccesFully" });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: `Some Error like ${err}` });
+  }
+};

@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "http://127.0.0.1:5500",
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET","DELETE"],
     credentials: true,
   })
 );
@@ -28,6 +28,7 @@ app.post("/signup", upload.single("image"), userController.signIN)
 app.post("/createPost", upload.single("image"),blogModel.createPost );
 app.get("/userPost/:userId",blogModel.userPost);
 app.get("/post/:postId", blogModel.post);
+app.delete("/deletePost/:postId", blogModel.deletePost);
 
 app.listen(port, (req, res) => {
   console.log(`http://localhost:${port}`);
