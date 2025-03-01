@@ -1,10 +1,7 @@
 const express = require("express");
 const connection = require("./config/db");
 const cors = require("cors");
-const { v4: uuidv4 } = require("uuid");
 const upload = require("./middlewares/multer.middlewares");
-const uploadOnCloudinary = require("./utils/cloudinary");
-require("dotenv").config();
 const userController =  require("./controller/userController");
 const blogModel = require("./controller/blogModel");
 

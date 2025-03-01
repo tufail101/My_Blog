@@ -1,5 +1,7 @@
 const connection = require("../config/db");
 const uploadOnCloudinary = require("../utils/cloudinary");
+const upload = require("../middlewares/multer.middlewares");
+const { v4: uuidv4 } = require("uuid");
 
 exports.login = (req, res) => {
   let { userName, password } = req.body;

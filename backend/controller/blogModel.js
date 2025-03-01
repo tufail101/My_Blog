@@ -1,5 +1,6 @@
 const connection = require("../config/db");
 const uploadOnCloudinary = require("../utils/cloudinary");
+const { v4: uuidv4 } = require("uuid");
 
 exports.createPost = async (req, res) => {
   let { userId, title, content } = req.body;
@@ -23,13 +24,6 @@ exports.createPost = async (req, res) => {
     try {
       connection.query(q, values, (err, result) => {
         if (err) throw err;
-        console.log("Inserting Data: ", [
-          postId,
-          userId,
-          title,
-          content,
-          img_url,
-        ]);
         res.status(200).json({ message: "Post Create SuccesFully" });
         console.log(result);
       });
