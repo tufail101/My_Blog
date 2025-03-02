@@ -3,7 +3,7 @@ const connection = require("./config/db");
 const cors = require("cors");
 const upload = require("./middlewares/multer.middlewares");
 const userController =  require("./controller/userController");
-const blogModel = require("./controller/blogModel");
+const blogModel = require("./controller/blogController");
 
 const path = require("path");
 const app = express();
