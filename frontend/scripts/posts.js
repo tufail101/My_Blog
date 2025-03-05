@@ -18,7 +18,7 @@ const getPost = async () => {
     }
     document.getElementById('post-container').innerHTML = `
     <h1 class="text-4xl font-bold px-2">${data.title}</h1>
-    <img src="${data.img_url}" alt="Post Image" class="w-1/2 mx-auto rounded-lg my-4" />
+    
     <p class="text-gray-700 leading-relaxed px-2">${data.content}</p>
 `;
     

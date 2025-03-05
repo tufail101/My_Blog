@@ -12,13 +12,7 @@ const port = process.env.PORT;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://127.0.0.1:5500",
-    methods: ["POST", "GET","DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("i am home");
