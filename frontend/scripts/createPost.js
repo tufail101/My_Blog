@@ -4,8 +4,8 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
     e.preventDefault();
     const title = document.getElementById("title").value;
     const content = document.getElementById("content").value;
-    const image = document.getElementById("image").files[0];
-    console.log(image);
+    // const image = document.getElementById("image").files[0];
+    // console.log(image);
     
     const userId = user ? user.userId : null;;
     const message = document.getElementById("message");
@@ -21,7 +21,7 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         formData.append("userId",userId);
         formData.append("title",title);
         formData.append("content",content);
-        formData.append("image",image);
+        // formData.append("image",image);
         formData.append("upload_preset", "your_upload_preset");
 
         const response = await fetch("http://localhost:3000/createPost",{
@@ -36,9 +36,9 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         if(response.ok){
             message.innerText = `Post Create SuccesFully`;
             message.style.color = "green";
-            // setTimeout(()=>{
-            //     window.location.href = `../pages/userPost.html`;
-            // },2000)
+            setTimeout(()=>{
+                window.location.href = `../pages/userPost.html`;
+            },2000)
         }
         
     }catch(error){

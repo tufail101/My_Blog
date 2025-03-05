@@ -46,16 +46,16 @@ exports.signIN = async (req, res) => {
     return res.status(400).json({ error: "Missing credentials" });
   }
 
-  let pic_img = null;
-  try {
-    if (req.file) {
-      const localFilePath = req.file.path;
-      let cloudinaryRes = await uploadOnCloudinary(localFilePath);
-      if (!cloudinaryRes || !cloudinaryRes.secure_url) {
-        return res.status(500).json({ error: "Failed to upload image" });
-      }
-      pic_img = cloudinaryRes.secure_url;
-    }
+  // let pic_img = null;
+  // try {
+  //   if (req.file) {
+  //     const localFilePath = req.file.path;
+  //     let cloudinaryRes = await uploadOnCloudinary(localFilePath);
+  //     if (!cloudinaryRes || !cloudinaryRes.secure_url) {
+  //       return res.status(500).json({ error: "Failed to upload image" });
+  //     }
+  //     pic_img = cloudinaryRes.secure_url;
+  //   }
     try {
       const q1 = "SELECT * FROM user WHERE userName = ?";
       connection.query(q1, [userName], (err, result) => {
@@ -66,11 +66,11 @@ exports.signIN = async (req, res) => {
         }
 
         const q2 =
-          "INSERT INTO user (id, name, userName, email, password, pic_url) VALUES (?, ?, ?, ?, ?, ?)";
+          "INSERT INTO user (id, name, userName, email, password) VALUES (?, ?, ?, ?, ?)";
 
         connection.query(
           q2,
-          [id, name, userName, email, password, pic_img],
+          [id, name, userName, email, password],
           (err) => {
             if (err) throw err;
 
@@ -84,8 +84,8 @@ exports.signIN = async (req, res) => {
       console.error(err);
       res.status(500).json({ error: "Internal server error" });
     }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "internal server error" });
-  }
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).json({ error: "internal server error" });
+  // }
 };

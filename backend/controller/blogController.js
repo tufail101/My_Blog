@@ -9,18 +9,18 @@ exports.createPost = async (req, res) => {
     return res.status(400).json({ error: "All Filed Are Required" });
   }
   let postId = uuidv4();
-  let img_url = null;
-  try {
-    if (req.file) {
-      const localFilePath = req.file.path;
-      console.log(localFilePath);
-      const cloudinaryRes = await uploadOnCloudinary(localFilePath);
-      img_url = cloudinaryRes.secure_url;
-      console.log(img_url);
-    }
+  // let img_url = null;
+  // try {
+  //   if (req.file) {
+  //     const localFilePath = req.file.path;
+  //     console.log(localFilePath);
+  //     const cloudinaryRes = await uploadOnCloudinary(localFilePath);
+  //     img_url = cloudinaryRes.secure_url;
+  //     console.log(img_url);
+  //   }
 
-    let q = `INSERT INTO posts(id,userId,title,content,img_url) VALUES(?,?,?,?,?)`;
-    let values = [postId, userId, title, content, img_url];
+    let q = `INSERT INTO posts(id,userId,title,content) VALUES(?,?,?,?)`;
+    let values = [postId, userId, title, content,];
     try {
       connection.query(q, values, (err, result) => {
         if (err) throw err;
@@ -30,9 +30,9 @@ exports.createPost = async (req, res) => {
     } catch (err) {
       console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
+  // } catch (err) {
+  //   console.log(err);
+  // }
 };
 
 exports.userPost = (req, res) => {

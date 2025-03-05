@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("ConfirmPassword").value;
-      const image = document.getElementById("image").files[0];
+    //   const image = document.getElementById("image").files[0];
 
       if (password !== confirmPassword) {
           message.innerHTML = "Passwords do not match";
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
           formData.append("userName", userName);
           formData.append("email", email);
           formData.append("password", password);
-          formData.append("image", image);
+        //   formData.append("image", image);
 
           const response = await fetch("http://localhost:3000/signup", {
               method: "POST",
