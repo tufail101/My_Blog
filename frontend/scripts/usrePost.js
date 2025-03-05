@@ -23,8 +23,6 @@ const fetchPost = async () => {
         postData.innerHTML = `
 <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-200 mt-6 transition-transform transform hover:scale-105 hover:shadow-2xl flex items-center">
   
- 
-  
   <div class="w-2/3">
     <h3 class="text-2xl font-extrabold text-gray-900 mb-2">${post.title}</h3>
     <p class="text-gray-700 leading-relaxed mb-4">${post.content.substring(0, 100)}...</p>

@@ -1,22 +1,37 @@
 const User = JSON.parse(localStorage.getItem("user"));
 const createPost =document.getElementsByClassName("createPost")[0];
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+menuToggle.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // console.log(user);
 
   if (User) {
     document.getElementById("logout").style.display = "block";
+    document.getElementById("mobile-logout").style.display = "block";
     document.getElementById("login").style.display = "none";
+    document.getElementById("mobile-login").style.display = "none";
     document.getElementById("signup").style.display = "none";
+    document.getElementById("mobile-signup").style.display = "none";
   } else {
     document.getElementById("logout").style.display = "none";
+    document.getElementById("mobile-logout").style.display = "none";
     document.getElementById("login").style.display = "block";
+    document.getElementById("mobile-login").style.display = "block";
     document.getElementById("signup").style.display = "block";
+    document.getElementById("mobile-signup").style.display = "block";
   }
 });
 
 document.getElementById("logout").addEventListener("click", () => {
   showConfirm();
 });
+document.getElementById("mobile-logout").addEventListener("click",() => {
+  showConfirm();
+})
 function showConfirm() {
   document.getElementById("customConfirm").style.display = "block";
   document.getElementById("overlay").style.display = "block";
