@@ -2,6 +2,9 @@ const connection = require("../config/db");
 const uploadOnCloudinary = require("../utils/cloudinary");
 const upload = require("../middlewares/multer.middlewares");
 const { v4: uuidv4 } = require("uuid");
+const nodemailer = require("nodemailer");
+const transporter = require("../utils/nodemailer");
+const { text } = require("express");
 
 exports.login = (req, res) => {
   let { userName, password } = req.body;
@@ -89,3 +92,78 @@ exports.signIN = async (req, res) => {
   //   res.status(500).json({ error: "internal server error" });
   // }
 };
+exports.sendOtp =async (req,res) => {
+  const {email,userName} = req.body;
+  console.log(email,userName);
+  
+  if (!email || !userName) {
+    return res.status(400).json({ message: 'Email And User Name is required' });
+  }
+  try {
+    const q = `SELECT * FROM user WHERE userName = ?`;
+    connection.query(q,[userName],async (error,result)=>{
+      if(error) throw new Error(error);
+      const user = result[0];
+      if(!user){
+        return res.status(404).json({message : "User Not Found"})
+      }
+      const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
+      const otp = generateOTP();
+  
+  const mailOption = {
+    from : "gco540203@gmail.com",
+    to : email,
+    subject :  'Your OTP Code',
+    text : `Your OTP is: ${otp}`,
+    html: `<p>Your OTP code is: <b>${otp}</b></p>`
+
+  };
+  await transporter.sendMail(mailOption,(error,info)=>{
+    if(error){
+      return res.status(500).json({ message: 'Failed to send OTP. Please try again later.',error });
+      console.log(error);
+      
+    }
+    else{
+      console.log(info.response);
+      res.status(200).json({message:"OTP Sended On Your Mail",otp });
+      
+    }
+  })
+    })
+  } catch (error) {
+    console.error('Error changing password:', error);
+    res.status(500).json({ message: 'Something went wrong, please try again later' });
+  }
+  
+};
+exports.changePassword = async (req,res) => {
+  const {userName,password} = req.body;
+  if (!password) {
+    return res.status(400).json({ message: 'Password is required' });
+  }
+  try {
+    const q = `SELECT * FROM user WHERE userName= ?`;
+    connection.query(q,[userName],(error,result) => {
+      if(error) throw error;
+      const user = result[0];
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      try {
+        const q2 =  `UPDATE user SET password = ? WHERE userName = ?`;
+        connection.query(q2,[password,userName],(error,result)=>{
+          if(error) throw error;
+          res.status(200).json({ message: 'Password changed successfully' });
+        })
+      } catch (error) {
+        console.error('Error changing password:', error);
+        res.status(500).json({ message: 'Something went wrong, please try again later' });
+      }
+    })
+  } catch (error) {
+    console.error('Error changing password:', error);
+    res.status(500).json({ message: 'Something went wrong, please try again later' });
+  }
+
+}

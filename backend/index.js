@@ -3,7 +3,7 @@ const connection = require("./config/db");
 const cors = require("cors");
 const upload = require("./middlewares/multer.middlewares");
 const userController =  require("./controller/userController");
-const blogModel = require("./controller/blogController");
+const blogController = require("./controller/blogController");
 
 const path = require("path");
 const app = express();
@@ -19,10 +19,13 @@ app.get("/", (req, res) => {
 });
 app.post("/login",userController.login )
 app.post("/signup", upload.single("image"), userController.signIN)
-app.post("/createPost", upload.single("image"),blogModel.createPost );
-app.get("/userPost/:userId",blogModel.userPost);
-app.get("/post/:postId", blogModel.post);
-app.delete("/deletePost/:postId", blogModel.deletePost);
+app.post("/createPost", upload.single("image"),blogController.createPost );
+app.get("/userPost/:userId",blogController.userPost);
+app.get("/post/:postId", blogController.post);
+app.delete("/deletePost/:postId", blogController.deletePost);
+app.post("/sendOtp",userController.sendOtp);
+app.post("/changePassword" ,userController.changePassword);
+
 
 app.listen(port, (req, res) => {
   console.log(`http://localhost:${port}`);

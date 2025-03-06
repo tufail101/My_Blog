@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <form action="" method="">
-        <h2>Forgot Password</h2>
-        
-        <label for="userName">User Name:</label>
-        <input type="text" id="userName" name="userName" placeholder="Enter your user name" required>
-        
-        <button type="button">Send OTP</button>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-        <label for="otp">OTP:</label>
-        <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
-        
-        <button type="submit">Verify OTP</button>
+  <div class="bg-white p-8 rounded-xl shadow-lg w-96" id="otpFormContainer">
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Forgot Password</h2>
+    <form id="forgotPasswordForm">
+      <div class="mb-4">
+        <label for="userName" class="block text-gray-700 font-medium mb-2">Enter your User Name</label>
+        <input type="text" id="userName" name="userName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 font-medium mb-2">Enter your registered email</label>
+        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      </div>
+      <button type="submit" id="sendOtpBtn" class="w-full  bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition " >Send OTP</button>
     </form>
+
+    <form id="otpVerifyForm" style="display: none;">
+      <div class="mb-4">
+        <label for="otp" class="block text-gray-700 font-medium mb-2">Enter your OTP</label>
+        <input type="text" id="otp" name="otp" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <button type="submit" class="my-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Verify OTP</button>
+    </form>
+
+    <p id="message" class="text-center text-green-600 mt-4 hidden"></p>
+  </div>
+
+  <script src="../scripts/forgoPass.js"></script>
 </body>
 </html>
