@@ -19,10 +19,9 @@ exports.login = (req, res) => {
       let user = result[0];
 
       if (!user) {
-        console.log("Invalid User");
         res.json({ message: "Invalid User" });
       } else {
-        // console.log(result[0]);
+        
         if (password != user.password) {
           console.log("Unkonwn user");
         } else {
@@ -32,7 +31,7 @@ exports.login = (req, res) => {
             userId: user.id,
             userName: user.name,
           });
-          // res.json({user});
+         
         }
       }
     });

@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forgot Password</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForGot Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-
-  <div class="bg-white p-8 rounded-xl shadow-lg w-96" id="otpFormContainer">
-    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Forgot Password</h2>
-    <form id="forgotPasswordForm">
-      <div class="mb-4">
-        <label for="userName" class="block text-gray-700 font-medium mb-2">Enter your User Name</label>
-        <input type="text" id="userName" name="userName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+    <div class="bg-white p-8 rounded-xl shadow-lg w-96" id="otpFormContainer">
+        <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Forgot Password</h2>
+        <form action="" id="forgotPasswordForm">
+    <div class="mb-4 relative">
+        <label for="password" class="block text-gray-700 font-medium mb-2">Enter New Password</label>
+        <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 pr-10" required>
+        <button type="button" onclick="togglePassword('password', 'togglePassIcon1')" class="absolute inset-y-0 right-3 flex items-center text-gray-500">
+          <span id="togglePassIcon1">👁️</span>
+        </button>
       </div>
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700 font-medium mb-2">Enter your registered email</label>
-        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      
+      <div class="mb-4 relative">
+        <label for="confirmPass" class="block text-gray-700 font-medium mb-2">Confirm Password</label>
+        <input type="password" id="confirmPass" name="confirmPass" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 pr-10" required>
+        <button type="button" onclick="togglePassword('confirmPass', 'togglePassIcon2')" class="absolute inset-y-0 right-3 flex items-center justify-center  text-gray-500">
+          <span id="togglePassIcon2">👁️</span>
+        </button>
       </div>
-      <button type="submit" id="sendOtpBtn" class="w-full  bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition " >Send OTP</button>
+      
+      <button type="submit" class="my-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Change Password</button>
     </form>
-
-    <form id="otpVerifyForm" style="display: none;">
-      <div class="mb-4">
-        <label for="otp" class="block text-gray-700 font-medium mb-2">Enter your OTP</label>
-        <input type="text" id="otp" name="otp" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-      </div>
-      <button type="submit" class="my-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Verify OTP</button>
-    </form>
-
     <p id="message" class="text-center text-green-600 mt-4 hidden"></p>
-  </div>
-
-  <script src="../scripts/forgoPass.js"></script>
+    </div>
+           
+    <script src="../scripts/forgotPass.js"></script>
 </body>
 </html>
