@@ -22,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 message.style.color = "green";
                 const user ={
                     userId:data.userId,
-                    userName: data.userName
+                    userName: data.userName,
+                    name: data.name,
+                    userEmail : data.userEmail
                 };
                 console.log("User Info:", user);
                 localStorage.setItem("user", JSON.stringify(user));
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                
                 window.location.href = "../index.html";
             } else {
-                message.innerText = data.error;
+                message.innerText = data.message;
                 message.style.color = "red";
             }
         } catch (error) {

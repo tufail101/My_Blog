@@ -25,7 +25,7 @@ app.get("/post/:postId", blogController.post);
 app.delete("/deletePost/:postId", blogController.deletePost);
 app.post("/sendOtp",userController.sendOtp);
 app.post("/changePassword" ,userController.changePassword);
-
+app.get("/homeBlod", blogController.homeBlog);
 
 app.listen(port, (req, res) => {
   console.log(`http://localhost:${port}`);

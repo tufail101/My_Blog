@@ -37,7 +37,7 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
             message.innerText = `Post Create SuccesFully`;
             message.style.color = "green";
             setTimeout(()=>{
-                window.location.href = `../pages/userPost.html`;
+                window.location.href = `../index.html`;
             },2000)
         }
         

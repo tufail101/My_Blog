@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // console.log(user);
 
   if (User) {
-    document.getElementById("logout").style.display = "block";
-    document.getElementById("mobile-logout").style.display = "block";
+    document.getElementById("profile").style.display = "block";
+    document.getElementById("mobile-profile").style.display = "block";
     document.getElementById("login").style.display = "none";
     document.getElementById("mobile-login").style.display = "none";
     document.getElementById("signup").style.display = "none";
     document.getElementById("mobile-signup").style.display = "none";
   } else {
-    document.getElementById("logout").style.display = "none";
-    document.getElementById("mobile-logout").style.display = "none";
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("mobile-profile").style.display = "none";
     document.getElementById("login").style.display = "block";
     document.getElementById("mobile-login").style.display = "block";
     document.getElementById("signup").style.display = "block";
@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.getElementById("logout").addEventListener("click", () => {
-  showConfirm();
-});
-document.getElementById("mobile-logout").addEventListener("click",() => {
-  showConfirm();
-})
+// document.getElementById("logout").addEventListener("click", () => {
+//   showConfirm();
+// });
+// document.getElementById("mobile-logout").addEventListener("click",() => {
+//   showConfirm();
+// })
 function showConfirm() {
   document.getElementById("customConfirm").style.display = "block";
   document.getElementById("overlay").style.display = "block";
@@ -63,9 +63,9 @@ function confirmAction(isConfirmed) {
   document.getElementById("overlay").style.display = "none";
 }
 
-document.getElementById("btn-confirm").addEventListener("click", () => {
-  confirmAction(true);
-});
-document.getElementById("btn-cancel").addEventListener("click", () => {
-  confirmAction(false);
-});
+// document.getElementById("btn-confirm").addEventListener("click", () => {
+//   confirmAction(true);
+// });
+// document.getElementById("btn-cancel").addEventListener("click", () => {
+//   confirmAction(false);
+// });

@@ -15,21 +15,27 @@ exports.login = (req, res) => {
   try {
     connection.query(q, (err, result) => {
       if (err) throw err;
-
+      if (!result || result.length === 0) {
+        return res.status(401).json({ message: "Invalid username or password" });
+      }
       let user = result[0];
-
+      
+      
       if (!user) {
-        res.json({ message: "Invalid User" });
+       return res.json({ message: "Invalid User" });
       } else {
         
         if (password != user.password) {
-          console.log("Unkonwn user");
+         
+          res.status(404).json({message : "Worng Password"});
         } else {
           console.log(user);
           res.json({
             message: "SuccesFully Login",
             userId: user.id,
-            userName: user.name,
+            name: user.name,
+            userName:user.userName,
+            userEmail : user.email
           });
          
         }

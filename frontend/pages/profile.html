@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+          <a href="../index.html" class="text-2xl font-bold text-blue-600">My Blog</a>
+          <button class="block lg:hidden text-gray-600" id="menu-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <ul class="hidden lg:flex space-x-6 mx-3" id="nav-menu">
+            <li><a href="../index.html" class="text-gray-600 hover:text-blue-600">Home</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">About</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-blue-600">Contact</a></li>
+            <li><a href="./pages/login.html" class="text-gray-600 hover:text-blue-600" id="login" style="display: none;">Login</a></li>
+            <li><a href="./pages/singUp.html" class="text-gray-600 hover:text-blue-600" id="signup" style="display: none;">Signup</a></li>
+            <li> <a href="./profile.html" class="text-gray-600 hover:text-blue-600 flex items-center" id="profile">
+              <i class="fa fa-user-circle text-2xl mr-2"></i> Profile
+            </a></li>
+          </ul>
+        </div>
+        <ul class="lg:hidden hidden flex-col space-y-4 px-4 py-2 bg-white shadow-md" id="mobile-menu">
+          <li><a href="#" class="text-gray-600 hover:text-blue-600">Home</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-600">About</a></li>
+          <li><a href="#" class="text-gray-600 hover:text-blue-600">Contact</a></li>
+          <li><a href="./pages//login.html" class="text-gray-600 hover:text-blue-600" id="mobile-login" style="display: none;">Login</a></li>
+          <li><a href="./pages/singUp.html" class="text-gray-600 hover:text-blue-600" id="mobile-signup" style="display: none;">Signup</a></li>
+          <li> <a href="./profile.html" class="text-gray-600 hover:text-blue-600 flex items-center" id="mobile-profile">
+            <i class="fa fa-user-circle text-2xl mr-2"></i> Profile
+          </a></li>
+        </ul>
+      </nav>
+    <div class="bg-gray-100 flex items-center justify-center min-h-screen my-3">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full">
+        <div class="text-center">
+            <i class="fa fa-user-circle text-6xl text-blue-600"></i>
+            <h2 id="name" class="text-3xl font-bold text-blue-600 mt-4"></h2>
+            <h3 id="username" class="text-xl font-bold text-blue-600 mt-4"></h3>
+            <p id="email" class="text-gray-600"></p>
+        </div>
+        <div class="mt-6 space-y-4">
+            <button class="w-full bg-blue-600 text-white font-bold py-3 rounded-2xl hover:bg-blue-700 transition duration-300 ease-in-out">
+                Edit Profile
+            </button>
+            <button id="logout" class="w-full bg-red-600 text-white font-bold py-3 rounded-2xl hover:bg-red-700 transition duration-300 ease-in-out">
+                Log Out
+            </button>
+        </div>
+
+        <!-- User Blogs Section -->
+        <div class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-800">My Blogs</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" id="postContener">
+               
+            </div>
+            <!-- <div class="text-center mt-8">
+                <a href="./userPost.html" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-2xl hover:bg-blue-700 transition duration-300 ease-in-out">View All Posts</a>
+            </div> -->
+        </div>
+    </div>
+  </div>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/logingLogout.js"></script>
+</body>
+</html>

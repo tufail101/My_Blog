@@ -19,31 +19,29 @@ exports.createPost = async (req, res) => {
   //     console.log(img_url);
   //   }
 
-    let q = `INSERT INTO posts(id,userId,title,content) VALUES(?,?,?,?)`;
-    let values = [postId, userId, title, content,];
-    try {
-      connection.query(q, values, (err, result) => {
-        if (err) throw err;
-        res.status(200).json({ message: "Post Create SuccesFully" });
-        console.log(result);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+  let q = `INSERT INTO posts(id,userId,title,content) VALUES(?,?,?,?)`;
+  let values = [postId, userId, title, content];
+  try {
+    connection.query(q, values, (err, result) => {
+      if (err) throw err;
+      res.status(200).json({ message: "Post Create SuccesFully" });
+      console.log(result);
+    });
+  } catch (err) {
+    console.log(err);
+  }
   // } catch (err) {
   //   console.log(err);
   // }
 };
 
 exports.userPost = (req, res) => {
-  let userId = req.params;
-  // console.log(userId);
+  let { userId } = req.params;
   let q = `SELECT * FROM posts WHERE userId = ?`;
   try {
     connection.query(q, [userId], (err, result) => {
       if (err) throw err;
       res.status(200).json(result);
-      // console.log(result);
     });
   } catch (err) {
     console.log(err);
@@ -81,5 +79,17 @@ exports.deletePost = (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: `Some Error like ${err}` });
+  }
+};
+exports.homeBlog = (req, res) => {
+  const q = `SELECT * FROM posts`;
+  try {
+    connection.query(q, (error, result) => {
+      if (error) throw new Error(error);
+
+      res.status(201).json({ blogs: result });
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Enternal Server Error" });
   }
 };
