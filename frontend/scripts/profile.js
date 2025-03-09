@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../pages/login.html";
   });
 
+  // document.getElementById("editProfileBtn").addEventListener("click",() => {
+  //   window.location.href = "../pages/editProfile.html";
+  // })
   const fetchPost = async () => {
     const userId = user.userId;
 
