@@ -16,10 +16,13 @@ const getPost = async () => {
           ).innerHTML = `<p>${data.err}</p>`;
         return;
     }
-    document.getElementById('post-container').innerHTML = `
-    <h1 class="text-4xl font-bold px-2">${data.title}</h1>
-    
-    <p class="text-gray-700 leading-relaxed px-2">${data.content}</p>
+    document.getElementById('post-container').innerHTML = 
+    `<div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8 border border-blue-600">
+  <h1 class="text-5xl font-extrabold text-blue-600 text-center mb-6">${data.title}</h1>
+  <p class="text-gray-700 text-lg leading-relaxed text-justify mb-4">${data.content}</p>
+ 
+</div>
+
 `;
     
   } catch (error) {
