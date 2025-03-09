@@ -130,7 +130,7 @@ exports.sendOtp =async (req,res) => {
       
     }
     else{
-      console.log(info.response);
+      
       res.status(200).json({message:"OTP Sended On Your Mail",otp });
       
     }
@@ -171,4 +171,32 @@ exports.changePassword = async (req,res) => {
     res.status(500).json({ message: 'Something went wrong, please try again later' });
   }
 
+}
+
+exports.contact = async (req,res) => {
+ const {name,email,message} = req.body;
+ const mailOption = {
+  from: `"${name}" <${email}>`,
+  replyTo: email,
+  to: 'blogm153@gmail.com', 
+  subject: `New Contact from ${name}`,
+  text: message,
+  html: `<p><strong>Name:</strong> ${name}</p>
+         <p><strong>Email:</strong> ${email}</p>
+         <p><strong>Message:</strong></p>
+         <p>${message}</p>`
+ }
+ try {
+  await transporter.sendMail(mailOption,(error,info) => {
+    if (error) {
+      console.error('Error sending feedback:', error);
+    res.status(500).json({ success: false, message: 'Failed to send Message' });
+    }
+    res.status(200).json({ success: true, message: 'Message sent successfully!' });
+  })
+ } catch (error) {
+  console.error('Error sending feedback:', error);
+    res.status(500).json({ success: false, message: 'Failed to send message' });
+ }
+ 
 }
