@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch(`https://my-blog-w41s.onrender.com/${userId}`);
+      const response = await fetch(`https://my-blog-w41s.onrender.com/${userId}`,{
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    });
       let data = await response.json();
       if (response.ok) {
         if (data.length === 0) {
