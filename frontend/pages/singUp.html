@@ -1,45 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../public/styles/singup.css">
-</head>
-<body>
-    <div class="container mx-auto p-8 max-w-lg bg-white rounded-2xl shadow-2xl mt-12">
-        <form id="signupForm" class="space-y-6" enctype="multipart/form-data">
-            <h2>Sign Up </h2>
-            <label for="Name">Name:</label>
-            <input type="text" id="Name" placeholder="Enter your name" required>
-            
-            <label for="userName">User Name:</label>
-            <input type="text" id="userName" placeholder="Enter your user name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter your Email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter your password" required>
-            <label for="ConfirmPassword">Confirm Password:</label>
-            <input type="password" id="ConfirmPassword" placeholder="Enter your password again to comfirm" required>
-           
-                <!-- <label for="image" class="block text-gray-800 font-semibold mb-2">Drop Your PROFILE PIC:</label>
-                <input type="file" name="image" id="image" accept="image/*"
-                       class="w-full p-4 border border-gray-400 rounded-2xl focus:outline-none focus:ring-4 focus:ring-blue-500"> -->
-            
-            <button type="submit">Sing Up</button>
-            <div class="links">
-                
-                <a href="../pages/login.html">Login To Your Account</a>
-            </div>
-            
-        </form>
-        
+    <link rel="stylesheet" href="../public/styles/singup.css" />
+  </head>
+  <body>
+    <div
+      class="container mx-auto p-8 max-w-lg bg-white rounded-2xl shadow-2xl mt-12"
+    >
+      <form id="signupForm" class="space-y-6" enctype="multipart/form-data">
+        <h2>Sign Up</h2>
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" placeholder="Enter your name" required />
 
-        <p id="message"></p>
+        <label for="userName">User Name:</label>
+        <input
+          type="text"
+          id="userName"
+          placeholder="Enter your user name"
+          required
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your Email"
+          required
+        />
+        <button type="submit" id="sendOtpBtn">Send OTP</button>
+      </form>
+
+      <form id="otpVerifyForm" class="space-y-6" style="display: none">
+        <label for="otp">Enter your OTP:</label>
+        <input
+          type="text"
+          id="otp"
+          name="otp"
+          placeholder="OTP"
+          required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        <button
+          type="submit"
+          class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+        >
+          Verify OTP
+        </button>
+      </form>
+
+      <form action="" id="passwordForm" style="display: none">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+        />
+        <label for="ConfirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="ConfirmPassword"
+          placeholder="Enter your password again to comfirm"
+          required
+        />
+        <button>Sign Up</button>
+      </form>
+      <div class="links">
+        <a href="../pages/login.html">Login To Your Account</a>
+      </div>
+
+      <p id="message" class="text-center text-green-600 mt-4 hidden"></p>
     </div>
 
     <script src="../scripts/singup.js"></script>
-</body>
+  </body>
 </html>
