@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    console.log("Form submission prevented!");
+    
 
     const name = document.getElementById("Name").value;
     const userName = document.getElementById("userName").value;
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const data = await response.json();
-      console.log("Server response:", data);
+      
 
       if (response.ok) {
         message.innerText = "OTP Send successful!";
