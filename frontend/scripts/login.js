@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             let response = await fetch("https://my-blog-w41s.onrender.com/login", {
                 method: "POST",
-                mode: 'no-cors',
+                // mode: 'no-cors',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userName, password })
             });

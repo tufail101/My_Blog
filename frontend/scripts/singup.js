@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const response = await fetch("https://my-blog-w41s.onrender.com/sendSignINOtp", {
         method: "POST",
-        mode: 'no-cors',
+        
         body: formData,
       });
 

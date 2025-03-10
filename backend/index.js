@@ -12,13 +12,13 @@ const port = process.env.PORT;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.options('*', cors());
 
 app.use(cors({
-  origin: 'https://my-blog-w41s.onrender.com', 
+  origin: 'https://my-bl0gg.netlify.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+app.options('*', cors());
 
 app.get("/", (req, res) => {
   res.send("i am home");
