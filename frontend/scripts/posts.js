@@ -8,7 +8,7 @@ const getPost = async () => {
     return;
   }
   try {
-    let responce = await fetch(`https://myblog-production-c5bb.up.railway.app/${postId}`);
+    let responce = await fetch(`https://my-blog-w41s.onrender.com/${postId}`);
     let data = await responce.json();
     if(!responce.ok){
         document.getElementById(

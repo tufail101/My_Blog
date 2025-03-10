@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded" , () => {
             formData.append("message",message);
             
             
-            const response = await fetch("https://myblog-production-c5bb.up.railway.app/userConatct",{
+            const response = await fetch("https://my-blog-w41s.onrender.com/userConatct",{
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json",

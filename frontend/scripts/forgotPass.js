@@ -32,7 +32,7 @@ const togglePassword = (inputId,iconId) => {
       }
       try {
         
-        const response = await fetch("https://myblog-production-c5bb.up.railway.app/changePassword",{
+        const response = await fetch("https://my-blog-w41s.onrender.com/changePassword",{
           method : "POST",
           headers : {
             "Content-Type" : "application/json"

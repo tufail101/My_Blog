@@ -12,9 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../pages/login.html";
   });
 
-  // document.getElementById("editProfileBtn").addEventListener("click",() => {
-  //   window.location.href = "../pages/editProfile.html";
-  // })
   const fetchPost = async () => {
     const userId = user.userId;
 
@@ -26,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch(`https://myblog-production-c5bb.up.railway.app/${userId}`);
+      const response = await fetch(`https://my-blog-w41s.onrender.com/${userId}`);
       let data = await response.json();
       if (response.ok) {
         if (data.length === 0) {
@@ -64,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (confirm("Are you sure you want to delete this post?")) {
               try {
                 let response = await fetch(
-                  `https://myblog-production-c5bb.up.railway.app/${post.id}`,
+                  `https://my-blog-w41s.onrender.com/${post.id}`,
                   {
                     method: "DELETE",
                   }

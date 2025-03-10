@@ -9,7 +9,7 @@ const fetchPost = async () => {
     return;
   }
   try {
-    const response = await fetch(`https://myblog-production-c5bb.up.railway.app/userPost/${userId}`);
+    const response = await fetch(`https://my-blog-w41s.onrender.com/userPost/${userId}`);
     let data = await response.json();
     if (response.ok) {
       if (data.lenght === 0) {
@@ -46,7 +46,7 @@ const fetchPost = async () => {
         deleteBtn.addEventListener("click", async () => {
           if (confirm("Are you sure you want to delete this post?")) {
             try {
-              let response = await fetch(`https://myblog-production-c5bb.up.railway.app/deletePost/${post.id}`, {
+              let response = await fetch(`https://my-blog-w41s.onrender.com/deletePost/${post.id}`, {
                 method: "DELETE",
               });
               let data = await response.json();
