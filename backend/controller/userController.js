@@ -26,10 +26,10 @@ exports.login = (req, res) => {
         return res.json({ message: "Invalid User" });
       } else {
         if (password != user.password) {
-          res.status(404).json({ message: "Worng Password" });
+         return res.status(404).json({ message: "Worng Password" });
         } else {
           console.log(user);
-          res.json({
+          return res.json({
             message: "SuccesFully Login",
             userId: user.id,
             name: user.name,
