@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const response = await fetch("https://myblog-production-c5bb.up.railway.app/sendSignINOtp", {
         method: "POST",
-
+        mode: 'no-cors',
         body: formData,
       });
 
