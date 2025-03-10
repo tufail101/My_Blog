@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/userPost/${userId}`);
+      const response = await fetch(`https://myblog-production-c5bb.up.railway.app/${userId}`);
       let data = await response.json();
       if (response.ok) {
         if (data.length === 0) {
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (confirm("Are you sure you want to delete this post?")) {
               try {
                 let response = await fetch(
-                  `http://localhost:3000/deletePost/${post.id}`,
+                  `https://myblog-production-c5bb.up.railway.app/${post.id}`,
                   {
                     method: "DELETE",
                   }

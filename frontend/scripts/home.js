@@ -1,6 +1,6 @@
 const fetchPost = async () => {
   const postcon = document.getElementById("postcon");
-  const response = await fetch("http://localhost:3000/homeBlod");
+  const response = await fetch("https://myblog-production-c5bb.up.railway.app/homeBlod");
   const data = await response.json();
 
   if (response.ok) {

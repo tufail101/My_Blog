@@ -24,7 +24,7 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         // formData.append("image",image);
         formData.append("upload_preset", "your_upload_preset");
 
-        const response = await fetch("http://localhost:3000/createPost",{
+        const response = await fetch("https://myblog-production-c5bb.up.railway.app/createPost",{
             method:"POST",
             // headers:{"Content-Type":"application/json"},
             // body:JSON.stringify({userId,title,content,image})

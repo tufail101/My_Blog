@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let password = document.getElementById("password").value;
 
         try {
-            let response = await fetch("http://localhost:3000/login", {
+            let response = await fetch("https://myblog-production-c5bb.up.railway.app/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userName, password })

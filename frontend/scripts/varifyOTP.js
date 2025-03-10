@@ -16,7 +16,7 @@ document.getElementById('forgotPasswordForm').addEventListener('submit', async (
     sendOtpBtn.textContent = 'Sending...';
   
     try {
-      const response = await fetch("http://localhost:3000/sendOtp", {
+      const response = await fetch("https://myblog-production-c5bb.up.railway.app/sendOtp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email,userName })

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append("userName", userName);
       formData.append("email", email);
 
-      const response = await fetch("http://localhost:3000/sendSignINOtp", {
+      const response = await fetch("https://myblog-production-c5bb.up.railway.app/sendSignINOtp", {
         method: "POST",
 
         body: formData,
@@ -97,7 +97,7 @@ document
             return;
           }
           try {
-            const response = await fetch("http://localhost:3000/signIN", {
+            const response = await fetch("https://myblog-production-c5bb.up.railway.app/signIN", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

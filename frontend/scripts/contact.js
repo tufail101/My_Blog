@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded" , () => {
             formData.append("message",message);
             
             
-            const response = await fetch("http://localhost:3000/userConatct",{
+            const response = await fetch("https://myblog-production-c5bb.up.railway.app/userConatct",{
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json",
