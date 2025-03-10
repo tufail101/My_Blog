@@ -11,7 +11,7 @@ exports.login = (req, res) => {
   if (!userName || !password) {
     return res.status(400).json({ error: "Missing credentials" });
   }
-  let q = `SELECT * FROM user WHERE userName = '${userName}'`;
+  let q = `SELECT * FROM users WHERE userName = '${userName}'`;
   try {
     connection.query(q, (err, result) => {
       if (err) throw err;
@@ -52,7 +52,7 @@ exports.sendSignINOtp = async (req, res) => {
     return res.status(400).json({ error: "Missing credentials" });
   }
   try {
-    const q1 = "SELECT * FROM user WHERE userName = ?";
+    const q1 = "SELECT * FROM users WHERE userName = ?";
     connection.query(q1, [userName], async (err, result) => {
       if (err) throw err;
 
@@ -89,7 +89,7 @@ exports.signIN = async (req, res) => {
   id = uuidv4();
   try {
     const q2 =
-      "INSERT INTO user (id, name, userName, email, password) VALUES (?, ?, ?, ?, ?)";
+      "INSERT INTO users (id, name, userName, email, password) VALUES (?, ?, ?, ?, ?)";
 
     connection.query(q2, [id, name, userName, email, password], (err) => {
       if (err) throw err;
@@ -109,7 +109,7 @@ exports.sendOtp = async (req, res) => {
     return res.status(400).json({ message: "Email And User Name is required" });
   }
   try {
-    const q = `SELECT * FROM user WHERE userName = ?`;
+    const q = `SELECT * FROM users WHERE userName = ?`;
     connection.query(q, [userName], async (error, result) => {
       if (error) throw new Error(error);
       const user = result[0];
@@ -150,7 +150,7 @@ exports.changePassword = async (req, res) => {
     return res.status(400).json({ message: "Password is required" });
   }
   try {
-    const q = `SELECT * FROM user WHERE userName= ?`;
+    const q = `SELECT * FROM users WHERE userName= ?`;
     connection.query(q, [userName], (error, result) => {
       if (error) throw error;
       const user = result[0];
@@ -158,7 +158,7 @@ exports.changePassword = async (req, res) => {
         return res.status(404).json({ message: "User not found" });
       }
       try {
-        const q2 = `UPDATE user SET password = ? WHERE userName = ?`;
+        const q2 = `UPDATE users SET password = ? WHERE userName = ?`;
         connection.query(q2, [password, userName], (error, result) => {
           if (error) throw error;
           res.status(200).json({ message: "Password changed successfully" });
