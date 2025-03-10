@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             let response = await fetch("https://myblog-production-c5bb.up.railway.app/login", {
                 method: "POST",
+                mode: 'no-cors',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userName, password })
             });
