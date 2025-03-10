@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append("userName", userName);
       formData.append("email", email);
 
-      const response = await fetch("https://myblog-production-c5bb.up.railway.app/sendSignINOtp", {
+      const response = await fetch("https://my-blog-w41s.onrender.com/sendSignINOtp", {
         method: "POST",
         mode: 'no-cors',
         body: formData,

@@ -15,7 +15,7 @@ app.use(express.json());
 app.options('*', cors());
 
 app.use(cors({
-  origin: 'https://my-bl0gg.netlify.app', 
+  origin: 'https://my-blog-w41s.onrender.com', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

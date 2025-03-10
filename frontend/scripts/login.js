@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let password = document.getElementById("password").value;
 
         try {
-            let response = await fetch("https://myblog-production-c5bb.up.railway.app/login", {
+            let response = await fetch("https://my-blog-w41s.onrender.com/login", {
                 method: "POST",
                 mode: 'no-cors',
                 headers: { "Content-Type": "application/json" },
