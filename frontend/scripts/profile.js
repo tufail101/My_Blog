@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (confirm("Are you sure you want to delete this post?")) {
               try {
                 let response = await fetch(
-                  `https://my-blog-w41s.onrender.com/${post.id}`,
+                  `https://my-blog-w41s.onrender.com/deletePost/${post.id}`,
                   {
                     method: "DELETE",
                   }
