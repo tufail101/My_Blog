@@ -18,10 +18,10 @@ const getPost = async () => {
     }
     document.getElementById('post-container').innerHTML = 
     `<div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-8 border border-blue-600">
-  <h1 class="text-5xl font-extrabold text-blue-600 text-center mb-6">${data.title}</h1>
-  <p class="text-gray-700 text-lg leading-relaxed text-justify mb-4">${data.content}</p>
- 
+  <h1 class="text-5xl font-extrabold text-blue-600 text-center mb-6 break-words">${data.title}</h1>
+  <p class="text-gray-700 text-lg leading-relaxed text-justify whitespace-pre-line">${data.content}</p>
 </div>
+
 
 `;
     
