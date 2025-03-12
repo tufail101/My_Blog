@@ -13,6 +13,11 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         message.innerText=`You Must Be Logged In TO Create Post `;
         message.style.color="red";
     }
+    if (!title || !content || !category) {
+        message.innerText = `All fields are required.`;
+        message.style.color = "red";
+        return;
+    }
     submitPost.disabled = true;
     submitPost.textContent = 'Posting...';
     console.log(category);
@@ -23,8 +28,13 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         formData.append("title",title);
         formData.append("content",content);
         formData.append("category",category);
+        
         // formData.append("image",image);
         formData.append("upload_preset", "your_upload_preset");
+
+        // formData.append("category", category);
+console.log("FormData:", [...formData.entries()]);
+
 
         const response = await fetch("https://my-blog-w41s.onrender.com/createPost",{
             method:"POST",
@@ -45,10 +55,15 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
             setTimeout(()=>{
                 window.location.href = `../index.html`;
             },2000)
+        }else{
+            submitPost.disabled = false;
+            submitPost.textContent = 'Failed To Post Try Again!';
         }
         
     }catch(error){
         console.log(error);
+        submitPost.disabled = false;
+        submitPost.textContent = 'Failed To Post!';
         message.innerText=`Sothing Went Worng`;
         message.style.color="red";
         

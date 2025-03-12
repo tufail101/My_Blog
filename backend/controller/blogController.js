@@ -9,7 +9,7 @@ exports.createPost = async (req, res) => {
   
   
   
-  if (!title || !content || !category) {
+  if (!title || !content) {
     return res.status(400).json({ error: "All Filed Are Required" });
   }
   let postId = uuidv4();
