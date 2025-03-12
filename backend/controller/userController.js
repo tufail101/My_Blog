@@ -2,6 +2,7 @@ const connection = require("../config/db");
 const uploadOnCloudinary = require("../utils/cloudinary");
 const upload = require("../middlewares/multer.middlewares");
 const { v4: uuidv4 } = require("uuid");
+const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const transporter = require("../utils/nodemailer");
 const { text } = require("express");
@@ -24,11 +25,11 @@ exports.login = (req, res) => {
 
       if (!user) {
         return res.json({ message: "Invalid User" });
-      } else {
-        if (password != user.password) {
-         return res.status(404).json({ message: "Worng Password" });
-        } else {
-          console.log(user);
+      } 
+      const matchPassword = bcrypt.compareSync(password,user.password);
+      if(!matchPassword){
+        return res.status(404).json({message : "Worng Password"});
+      }
           return res.json({
             message: "SuccesFully Login",
             userId: user.id,
@@ -36,8 +37,8 @@ exports.login = (req, res) => {
             userName: user.userName,
             userEmail: user.email,
           });
-        }
-      }
+        
+      
     });
   } catch (err) {
     res.status(500).json({ error: "Internal server error" });
@@ -87,11 +88,12 @@ exports.sendSignINOtp = async (req, res) => {
 exports.signIN = async (req, res) => {
   const { name, userName, email, password } = req.body;
   id = uuidv4();
+  const hashPassword = bcrypt.hashSync(password,10);
   try {
     const q2 =
       "INSERT INTO users (id, name, userName, email, password) VALUES (?, ?, ?, ?, ?)";
 
-    connection.query(q2, [id, name, userName, email, password], (err) => {
+    connection.query(q2, [id, name, userName, email, hashPassword], (err) => {
       if (err) throw err;
 
       return res
