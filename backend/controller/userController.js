@@ -122,6 +122,9 @@ exports.sendOtp = async (req, res) => {
         return userEmail === dbEmail;
       }
       const matchEmail = matchEmailFuncton(email,user.email)
+      if(!matchEmail){
+        return res.status(404).json({message : "Wrong Email"});
+      }
       const generateOTP = () =>
         Math.floor(100000 + Math.random() * 900000).toString();
       const otp = generateOTP();
