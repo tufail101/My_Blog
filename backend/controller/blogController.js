@@ -4,8 +4,6 @@ const { v4: uuidv4 } = require("uuid");
 
 exports.createPost = async (req, res) => {
   let { userId, title, content,category } = req.body;
-  console.log(category);
-  console.log(userId);
   
   
   
@@ -21,10 +19,10 @@ exports.createPost = async (req, res) => {
     connection.query(q, values, (err, result) => {
       if (err) throw err;
       res.status(200).json({ message: "Post Create SuccesFully",result });
-      console.log(result);
+      
     });
   } catch (err) {
-    console.log(err);
+    return res.status(500).json({ error: "Internal server error" });
   }
  
 };
@@ -38,7 +36,6 @@ exports.userPost = (req, res) => {
       res.status(200).json(result);
     });
   } catch (err) {
-    console.log(err);
     res.status(400).json({ message: `Some Error like ${err}` });
   }
 };
@@ -57,7 +54,7 @@ exports.post = (req, res) => {
       res.status(200).json(result[0]);
     });
   } catch (err) {
-    console.error("SQL error:", err);
+  
     return res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -71,7 +68,7 @@ exports.deletePost = (req, res) => {
       res.status(200).json({ message: "Post Deleted SuccesFully" });
     });
   } catch (err) {
-    console.log(err);
+    
     res.status(400).json({ message: `Some Error like ${err}` });
   }
 };
