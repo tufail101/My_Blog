@@ -29,7 +29,7 @@ app.post(
   upload.single("image"),
   userController.sendSignINOtp
 );
-app.post("/createPost", upload.single("image"), blogController.createPost);
+app.post("/createPost", blogController.createPost);
 app.get("/userPost/:userId", blogController.userPost);
 app.get("/post/:postId", blogController.post);
 app.delete("/deletePost/:postId", blogController.deletePost);

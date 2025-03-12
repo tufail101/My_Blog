@@ -3,36 +3,30 @@ const uploadOnCloudinary = require("../utils/cloudinary");
 const { v4: uuidv4 } = require("uuid");
 
 exports.createPost = async (req, res) => {
-  let { userId, title, content } = req.body;
-  // let img_url = req.body.img_url || null;
-  if (!title || !content) {
+  let { userId, title, content,category } = req.body;
+  console.log(category);
+  console.log(userId);
+  
+  
+  
+  if (!title || !content || !category) {
     return res.status(400).json({ error: "All Filed Are Required" });
   }
   let postId = uuidv4();
-  // let img_url = null;
-  // try {
-  //   if (req.file) {
-  //     const localFilePath = req.file.path;
-  //     console.log(localFilePath);
-  //     const cloudinaryRes = await uploadOnCloudinary(localFilePath);
-  //     img_url = cloudinaryRes.secure_url;
-  //     console.log(img_url);
-  //   }
+  
 
-  let q = `INSERT INTO posts(id,userId,title,content) VALUES(?,?,?,?)`;
-  let values = [postId, userId, title, content];
+  let q = `INSERT INTO posts(id,userId,title,content,category) VALUES(?,?,?,?,?)`;
+  let values = [postId, userId, title, content,category];
   try {
     connection.query(q, values, (err, result) => {
       if (err) throw err;
-      res.status(200).json({ message: "Post Create SuccesFully" });
+      res.status(200).json({ message: "Post Create SuccesFully",result });
       console.log(result);
     });
   } catch (err) {
     console.log(err);
   }
-  // } catch (err) {
-  //   console.log(err);
-  // }
+ 
 };
 
 exports.userPost = (req, res) => {
