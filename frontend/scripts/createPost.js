@@ -20,7 +20,7 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
     }
     submitPost.disabled = true;
     submitPost.textContent = 'Posting...';
-    console.log(category);
+
     
     try{
         const formData = new FormData();
@@ -28,18 +28,16 @@ document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
         formData.append("title",title);
         formData.append("content",content);
         formData.append("category",category);
-        
+
         // formData.append("image",image);
         formData.append("upload_preset", "your_upload_preset");
 
-        // formData.append("category", category);
-console.log("FormData:", [...formData.entries()]);
+
 
 
         const response = await fetch("https://my-blog-w41s.onrender.com/createPost",{
             method:"POST",
-            // headers:{"Content-Type":"application/json"},
-            // body:JSON.stringify({userId,title,content,image})
+           
             body:formData
            
         })
