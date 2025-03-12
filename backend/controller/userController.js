@@ -148,6 +148,7 @@ exports.sendOtp = async (req, res) => {
 };
 exports.changePassword = async (req, res) => {
   const { userName, password } = req.body;
+  const hashPassword = bcrypt.hashSync(password,10);
   if (!password) {
     return res.status(400).json({ message: "Password is required" });
   }
@@ -161,7 +162,7 @@ exports.changePassword = async (req, res) => {
       }
       try {
         const q2 = `UPDATE users SET password = ? WHERE userName = ?`;
-        connection.query(q2, [password, userName], (error, result) => {
+        connection.query(q2, [hashPassword, userName], (error, result) => {
           if (error) throw error;
           res.status(200).json({ message: "Password changed successfully" });
         });
