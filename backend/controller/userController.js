@@ -118,6 +118,10 @@ exports.sendOtp = async (req, res) => {
       if (!user) {
         return res.status(404).json({ message: "User Not Found" });
       }
+      const matchEmailFuncton = (userEmail , dbEmail) => {
+        return userEmail === dbEmail;
+      }
+      const matchEmail = matchEmailFuncton(email,user.email)
       const generateOTP = () =>
         Math.floor(100000 + Math.random() * 900000).toString();
       const otp = generateOTP();
