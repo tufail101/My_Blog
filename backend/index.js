@@ -35,7 +35,7 @@ app.get("/post/:postId", blogController.post);
 app.delete("/deletePost/:postId", blogController.deletePost);
 app.post("/sendOtp", userController.sendOtp);
 app.post("/changePassword", userController.changePassword);
-app.get("/homeBlod", blogController.homeBlog);
+app.get("/homeBlog", blogController.homeBlog);
 app.post("/userConatct", userController.contact);
 app.post("/signIN", userController.signIN);
 

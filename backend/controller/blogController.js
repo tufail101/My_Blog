@@ -73,14 +73,34 @@ exports.deletePost = (req, res) => {
   }
 };
 exports.homeBlog = (req, res) => {
-  const q = `SELECT * FROM posts`;
+  const {category = "All" , searchQuery} = req.query;
+  
+  
+  let q = ``;
+  let queryParams = [];
+  if(category === "All"){
+    q = `SELECT * FROM posts WHERE 1=1`;
+  }
+  if(category !== "All"){
+    q = `SELECT * FROM posts  WHERE category = ?`
+   queryParams.push(category)
+  }
+  if(searchQuery){
+    q = `SELECT * FROM posts WHERE title LIKE ? OR content LIKE ?`;
+    queryParams.push(`%${searchQuery}%`, `%${searchQuery}%`);
+  }
   try {
-    connection.query(q, (error, result) => {
+    connection.query(q,queryParams ,(error, result) => {
       if (error) throw new Error(error);
-
-      res.status(201).json({ blogs: result });
+      if (result.length === 0) {
+        return res.status(404).json({ message: "No posts found for this category or search query." });
+      }
+        res.status(201).json({ blogs: result });
+      
+      
     });
   } catch (error) {
     res.status(500).json({ error: "Enternal Server Error" });
   }
+  
 };
