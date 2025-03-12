@@ -86,7 +86,7 @@ document
           e.preventDefault();
           const name = sessionStorage.getItem("name");
           const userName = sessionStorage.getItem("userName");
-          const email = sessionStorage.getItem("userName");
+          const email = sessionStorage.getItem("email");
           const password = document.getElementById("password").value;
           const ConfirmPassword = document.getElementById("ConfirmPassword");
           const message = document.getElementById("message");
