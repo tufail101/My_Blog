@@ -1,9 +1,25 @@
 const user = JSON.parse(localStorage.getItem("user"));
 document.addEventListener("DOMContentLoaded", () => {
+    const quill = new Quill("#editor-container", {
+        theme: "snow",
+        placeholder: "Write something amazing...",
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, false] }],
+                ["bold", "italic", "underline", "strike"],
+                [{ list: "ordered" }, { list: "bullet" }],
+                ["blockquote", "code-block"],
+                ["link", "image"],
+                [{ align: [] }],
+                [{ color: [] }, { background: [] }],
+                ["clean"]
+            ]
+        }
+    });
 document.getElementById("createPostForm").addEventListener("submit",async (e)=>{
     e.preventDefault();
     const title = document.getElementById("title").value;
-    const content = document.getElementById("content").value;
+    const content = quill.root.innerHTML;
     const category = document.getElementById("category").value;
     const submitPost = document.getElementById("submitPost");
     const userId = user ? user.userId : null;;
