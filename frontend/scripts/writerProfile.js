@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const userName = new URLSearchParams(window.location.search).get("userName");
   try {
     const response = await fetch(
-      `${API_URL}/${userName}`
+      `${API_URL}/writerProfile/${userName}`
     );
     const data = await response.json();
 
