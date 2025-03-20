@@ -124,26 +124,27 @@ exports.writerPost = (req,res) => {
   }
   
 }
-exports.showWriterBlog = (req,res) => {
-  const {userName} = req.params;
+exports.showWriterBlog = (req, res) => {
+  const { userName } = req.params;
+  const q1 = `SELECT * FROM users WHERE userName = ?`;
 
-  q = `SELECT * FROM users WHERE userName = ?`;
-  connection.query(q,userName,(error,userResult) => {
-    if(error){
-      return res.status(500).json({message : "Internal Servar Error"});
+  connection.query(q1, [userName], (error, userResult) => {
+    if (error) {
+      return res.status(500).json({ message: "Internal Server Error" });
     }
+
     if (userResult.length === 0) {
       return res.status(404).json({ message: "User not found" });
     }
-    const userId = userResult[0].userId;
 
-    const q2 = `SELECT * FROM posts WHERE userId =?`;
-    connection.query(q2,userId,(error,postResult) => {
-      if(error){
-        return res.status(500).json({message : "Internal Servar Error"});
+    const userId = userResult[0].id; 
+
+    const q2 = `SELECT * FROM posts WHERE userId = ?`;
+    connection.query(q2, [userId], (error, postResult) => {
+      if (error) {
+        return res.status(500).json({ message: "Internal Server Error" });
       }
       return res.status(200).json(postResult);
-    })
-  })
-
-}
+    });
+  });
+};
