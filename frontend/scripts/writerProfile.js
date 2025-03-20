@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             viewAllButton.className = "bg-blue-600 text-white font-bold py-3 px-6 rounded-2xl hover:bg-blue-700 transition duration-300 ease-in-out";
             viewAllButton.textContent = "View All Posts";
             viewAllButton.addEventListener("click", () => {
-              window.location.href = `../pages/showWriterBlog.html?userName = ${userName}`;
+              window.location.href = `../pages/showWriterBlog.html?userName=${userName}`;
             });
             postsContainer.appendChild(viewAllButton);
           }
