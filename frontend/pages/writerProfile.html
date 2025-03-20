@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writer Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+</head>
+<body class="bg-blue-600 min-h-screen flex items-center justify-center">
+  <div id="profile-container" class="max-w-3xl w-full bg-white rounded-2xl shadow-lg p-8">
+    <div class="flex items-center space-x-6">
+      <!-- <img id="user-avatar" src="" alt="User Avatar" class="w-24 h-24 rounded-full border-4 border-blue-500"> -->
+      <i class="fa fa-user-circle text-6xl text-blue-600"></i>
+      <div>
+        <h1 id="name" class="text-3xl font-bold text-gray-800">Loading...</h1>
+        <h4 id="user-name" class="text-xl font-bold text-gray-800">Loading...</h4>
+        <a id="user-email" href="#" class="text-blue-500 hover:underline">Loading email...</a>
+      </div>
+    </div>
+    <div class="mt-6">
+      <h2 class="text-2xl font-semibold text-gray-700">About the Author</h2>
+      <p id="user-bio" class="text-gray-600 mt-2">Loading bio...</p>
+    </div>
+    <div class="mt-8">
+      <h2 class="text-2xl font-semibold text-gray-700">Posts by this Author</h2>
+      <div id="user-posts" class="space-y-4 mt-4">
+        <p class="text-gray-500">Loading posts...</p>
+      </div>
+    </div>
+  </div>
+
+<script src="../scripts/writerProfile.js"></script>
+</body>
+</html>

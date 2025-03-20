@@ -17,18 +17,17 @@ const renderPosts = async (posts) => {
         postItem.classList.add("bg-white", "rounded-2xl", "shadow-lg", "overflow-hidden","my-2");
       postItem.innerHTML = `
            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div class="p-6">
-                <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
-                <p class="text-gray-600 mt-2">${post.content.substring(
-                  0,
-                  100
-                )}</p>
-                <div class="flex justify-between items-center mt-4">
-                    <a href="./pages/post.html?postId=${post.id}" class="text-blue-600 hover:underline">Read More →</a>
-                    <span class="text-gray-500 text-sm">Published on ${post.createdAt}</span>
-                </div>
-             </div>
-            </div>
+        <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-800">${post.title}</h2>
+          <p class="text-gray-600 mt-2">${post.content.substring(0,100)}</p>
+          <div class="flex justify-between items-center mt-4">
+            <a href="./pages/post.html?postId=${post.id}" class="text-blue-600 hover:underline">Read More →</a>
+            <span class="text-gray-500 text-sm">Published on ${post.createdAt}</span>
+          </div>
+         <a href="./pages/writerProfile.html?userName=${post.userName}" class="hover:underline"> <p class="text-gray-500 text-sm mt-2">Author: ${post.userName}</p></a>
+
+        </div>
+      </div>
         `;
       postcon.appendChild(postItem);
     });

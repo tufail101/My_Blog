@@ -79,14 +79,14 @@ exports.homeBlog = (req, res) => {
   let q = ``;
   let queryParams = [];
   if(category === "All"){
-    q = `SELECT * FROM posts WHERE 1=1`;
+    q = `SELECT posts.*, users.userName FROM posts JOIN users ON posts.userid = users.id WHERE 1=1`;
   }
   if(category !== "All"){
-    q = `SELECT * FROM posts  WHERE category = ?`
+    q = `SELECT posts.*, users.userName FROM posts JOIN users ON posts.userid = users.id WHERE category = ?`
    queryParams.push(category)
   }
   if(searchQuery){
-    q = `SELECT * FROM posts WHERE title LIKE ? OR content LIKE ?`;
+    q = `SELECT posts.*, users.username  FROM posts JOIN users ON posts.userid = users.id WHERE title LIKE ? OR content LIKE ?`;
     queryParams.push(`%${searchQuery}%`, `%${searchQuery}%`);
   }
   try {
@@ -104,3 +104,23 @@ exports.homeBlog = (req, res) => {
   }
   
 };
+
+exports.writerPost = (req,res) => {
+  const {userId} = req.params;
+  console.log(req.params);
+  
+  const q = `SELECT * FROM posts WHERE userId = ?`;
+  try {
+    connection.query(q,userId,(error,result) => {
+      if(error){
+        return res.status(500).json({message : "Internal Servar Error "});
+      }
+      
+      return res.status(201).json({blogs:result})
+      
+    })
+  } catch (error) {
+    return res.status(500).json({message : "Internal Servar Error "});
+  }
+  
+}
