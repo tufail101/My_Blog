@@ -1,8 +1,9 @@
+const API_URL = `https://my-blog-w41s.onrender.com`;
 document.addEventListener("DOMContentLoaded", async () => {
   const userName = new URLSearchParams(window.location.search).get("userName");
   try {
     const response = await fetch(
-      `http://localhost:3000/writerProfile/${userName}`
+      `${API_URL}/${userName}`
     );
     const data = await response.json();
 
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     postsContainer.innerHTML = "";
 
     try {
-        const postResponse = await fetch(`http://localhost:3000/writerProfile/post/${userId}`);
+        const postResponse = await fetch(`${API_URL}/writerProfile/post/${userId}`);
         const postData = await postResponse.json();
         console.log(postData);
         
