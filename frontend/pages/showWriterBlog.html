@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+    <!-- <link rel="stylesheet" href="../public/styles/logingLogout.css"> -->
+    <link rel="stylesheet" href="../public/styles/logingLogout.css">
+</head>
+<body>
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="../index.html" class="text-2xl font-bold text-blue-600">My Blog</a>
+      <button class="block lg:hidden text-gray-600" id="menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <ul class="hidden lg:flex space-x-6 mx-3" id="nav-menu">
+        <li><a href="../index.html" class="text-gray-600 hover:text-blue-600">Home</a></li>
+        <li><a href="./about.html" class="text-gray-600 hover:text-blue-600">About</a></li>
+        <li><a href="./contact.html" class="text-gray-600 hover:text-blue-600">Contact</a></li>
+        <li><a href="./login.html" class="text-gray-600 hover:text-blue-600" id="login" style="display: none;">Login</a></li>
+        <li><a href="./singUp.html" class="text-gray-600 hover:text-blue-600" id="signup" style="display: none;">Signup</a></li>
+        <li> <a href="./profile.html" class="text-gray-600 hover:text-blue-600 flex items-center" id="profile">
+          <i class="fa fa-user-circle text-2xl mr-2"></i> Profile
+        </a></li>
+      </ul>
+    </div>
+    <ul class="lg:hidden hidden flex-col space-y-4 px-4 py-2 bg-white shadow-md" id="mobile-menu">
+      <li><a href="../index.html" class="text-gray-600 hover:text-blue-600">Home</a></li>
+      <li><a href="./about.html" class="text-gray-600 hover:text-blue-600">About</a></li>
+      <li><a href="./contact.html" class="text-gray-600 hover:text-blue-600">Contact</a></li>
+      <li><a href="./login.html" class="text-gray-600 hover:text-blue-600" id="mobile-login" style="display: none;">Login</a></li>
+      <li><a href="./singUp.html" class="text-gray-600 hover:text-blue-600" id="mobile-signup" style="display: none;">Signup</a></li>
+      <li> <a href="./profile.html" class="text-gray-600 hover:text-blue-600 flex items-center" id="mobile-profile">
+        <i class="fa fa-user-circle text-2xl mr-2"></i> Profile
+      </a></li>
+    </ul>
+  </nav>
+  <div
+      id="constumAlert"
+      class="bg-red-200 text-gray-600 px-4 py-4"
+      style="display: none"
+    >
+      <p class="mx-4 font-bold"></p>
+    </div>
+    <div id="overlay"></div>
+    <div id="customConfirm">
+      <p>Are you sure you want to logout?</p>
+      <button class="btn btn-confirm" id="btn-confirm">Yes</button>
+      <button class="btn btn-cancel" id="btn-cancel">No</button>
+    </div>
+
+  <div class="postcon" id="postcon"></div>
+  <footer class="bg-white text-center py-6 mt-10 shadow-md">
+    <p class="text-gray-600">&copy; 2025 My Blog. All rights reserved.</p>
+  </footer>
+
+ <script src="../scripts/showWriterBlog.js"></script>
+ <script src="../scripts/logingLogout.js"></script>
+</body>
+</html>

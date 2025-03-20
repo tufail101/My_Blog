@@ -40,6 +40,7 @@ app.post("/userConatct", userController.contact);
 app.post("/signIN", userController.signIN);
 app.get("/writerProfile/:userName",userController.writerProfile);
 app.get("/writerProfile/:post/:userId",blogController.writerPost);
+app.get("/showWriterBlog/:userName", blogController.showWriterBlog);
 
 app.listen(port, (req, res) => {
   console.log(`http://localhost:${port}`);
