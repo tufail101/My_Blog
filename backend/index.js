@@ -38,6 +38,8 @@ app.post("/changePassword", userController.changePassword);
 app.get("/homeBlog", blogController.homeBlog);
 app.post("/userConatct", userController.contact);
 app.post("/signIN", userController.signIN);
+app.get("/writerProfile/:userName",userController.writerProfile);
+app.get("/writerProfile/:post/:userId",blogController.writerPost);
 
 app.listen(port, (req, res) => {
   console.log(`http://localhost:${port}`);
